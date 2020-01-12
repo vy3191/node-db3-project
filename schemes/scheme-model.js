@@ -23,8 +23,8 @@ async function update(body,id){
    return findById(id)
 }
 
-function remove() {
-
+ function remove(id) {
+   return db("schemes").where({id}).del();
 }
 
 module.exports = {
