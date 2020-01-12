@@ -48,7 +48,6 @@ router.get('/:id/steps', (req, res) => {
 
 router.post('/', (req, res) => {
   const schemeData = req.body;
-
   Schemes.add(schemeData)
   .then(scheme => {
     res.status(201).json(scheme);
@@ -81,7 +80,6 @@ router.post('/:id/steps', (req, res) => {
 router.put('/:id', (req, res) => {
   const { id } = req.params;
   const changes = req.body;
-
   Schemes.findById(id)
   .then(scheme => {
     if (scheme) {

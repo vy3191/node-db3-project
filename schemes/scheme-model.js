@@ -13,13 +13,14 @@ function findSteps() {
   
 }
 
-function add(body) {
-  return db("schemes").insert(body);
-  // return db("schemes").where({id}).first();
+async function add(body) {
+  const [id] = await db("schemes").insert(body);
+  return db("schemes").where({id}).first();
 }
 
-function update(){
-
+async function update(body,id){
+   await db("schemes").where({ id }).update(body);
+   return findById(id)
 }
 
 function remove() {
