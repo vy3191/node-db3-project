@@ -21,6 +21,7 @@ async function add(body) {
   return db("schemes").where({id}).first();
 }
 
+
 async function update(body,id){
    await db("schemes").where({ id }).update(body);
    return findById(id)
@@ -30,11 +31,18 @@ async function update(body,id){
    return db("schemes").where({id}).del();
 }
 
+// Stretch goal
+function addStep(step, scheme_id) {
+   const newStep = {...step, scheme_id}
+   const [id] = db("steps").insert(newStep);
+   return db("steps").where({id})
+}
 module.exports = {
    find,
    findById,
    add,
    remove,
    update,
-   findSteps
+   findSteps,
+   addStep
 }
